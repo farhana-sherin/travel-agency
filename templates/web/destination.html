@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations | Fady Travel</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap');
+
+    .heading-title {
+      font-family: 'Playfair Display', serif;
+    }
+    .intro-text {
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="py-20 bg-[#fdfafa] w-[95%] mx-auto rounded-xl">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h1 class="text-5xl font-bold text-gray-800 heading-title">Top Destinations</h1>
+      <p class="text-gray-500 mt-4 text-lg intro-text px-4">
+        Discover the world’s most breathtaking places — handpicked for unforgettable adventures, romantic getaways, and soul-soothing escapes.
+      </p>
+      <div class="w-20 h-1 bg-pink-500 mt-6 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10">
+      
+      <a href="">
+        <div class="shadow-lg rounded-xl overflow-hidden bg-white transition-transform hover:scale-105 duration-300">
+          <img src="{% static 'images/beach.jpeg' %}" alt="Maldives" class="h-56 w-full object-cover">
+          <div class="p-5">
+            <h2 class="text-2xl font-bold">Maldives</h2>
+            <p class="text-sm text-gray-500">Indian Ocean</p>
+            <p class="mt-2">Wake up to the gentle sound of waves, dine under starlit skies, and snorkel through vibrant coral gardens in the dreamlike paradise of the Maldives.</p>
+            <p class="text-lg font-semibold mt-3 text-pink-600">₹75,000</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="">
+        <div class="shadow-lg rounded-xl overflow-hidden bg-white transition-transform hover:scale-105 duration-300">
+          <img src="{% static 'images/paris.jpeg' %}" alt="Paris" class="h-56 w-full object-cover">
+          <div class="p-5">
+            <h2 class="text-2xl font-bold">Paris</h2>
+            <p class="text-sm text-gray-500">France</p>
+            <p class="mt-2">Fall in love with the City of Lights — where every street is a story, every café holds a romance, and every sunset over the Eiffel Tower feels like a movie scene.</p>
+            <p class="text-lg font-semibold mt-3 text-pink-600">₹95,000</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="">
+        <div class="shadow-lg rounded-xl overflow-hidden bg-white transition-transform hover:scale-105 duration-300">
+          <img src="{% static 'images/kerala.jpeg' %}" alt="Bali" class="h-56 w-full object-cover">
+          <div class="p-5">
+            <h2 class="text-2xl font-bold">Bali</h2>
+            <p class="text-sm text-gray-500">Indonesia</p>
+            <p class="mt-2">Unwind in Bali’s magic — meditate in jungle temples, chase waterfalls through emerald forests, and let the golden beaches steal your breath away.</p>
+            <p class="text-lg font-semibold mt-3 text-pink-600">₹68,000</p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</body>
+</html>

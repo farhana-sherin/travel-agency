@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Fady Travel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+
+  <body class="bg-cover bg-center bg-no-repeat" style="background-image: url('static/images/people.jpg');">
+    <div class="min-h-screen flex items-center justify-center bg-black bg-opacity-60">
+      <div class="bg-white p-8 rounded-2xl shadow-2xl w-[90%] max-w-md animate-fade-in-down">
+
+        <div class="mb-8 text-center">
+          <img src="{% static 'images/logo.png' %}" alt="Fady Travel Logo" class="mx-auto w-32">
+          <h1 class="text-3xl font-bold text-gray-800 mt-4">Welcome Back</h1>
+          <p class="text-gray-500 text-sm">Log in to explore new destinations</p>
+        </div>
+
+        <form method="POST">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label class="block text-gray-700 font-semibold mb-2" for="email">Email</label>
+            <input type="email" id="email" name="email" required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-400 transition duration-200">
+          </div>
+
+          <div class="mb-6">
+            <label class="block text-gray-700 font-semibold mb-2" for="password">Password</label>
+            <input type="password" id="password" name="password" required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-400 transition duration-200">
+          </div>
+
+          <button type="submit"
+            class="w-full bg-red-600 text-white font-semibold py-3 rounded-lg hover:bg-red-700 transition duration-300 shadow-md">
+            Log In
+          </button>
+        </form>
+
+        <div class="mt-6 text-center">
+          {% if error %}
+        <p class="mt-5 text-[15px] text-red-500">{{message}}</p>
+        {% endif %}
+          <p class="text-sm text-gray-500">Don’t have an account?
+            <a href="{% url 'web:register' %}" class="text-red-500 font-semibold hover:underline">Sign up</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
