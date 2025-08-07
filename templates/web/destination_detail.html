@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ destination.title }} | Fady Travel</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap');
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#fdfafa] to-[#f3f3f3] text-gray-800">
+
+  <section class="max-w-6xl mx-auto py-12 px-6">
+    <div class="bg-white shadow-2xl rounded-3xl overflow-hidden">
+      <div class="relative h-[400px] overflow-hidden">
+        <img src="{{ destination.image.url }}" alt="{{ destination.title }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        <div class="absolute top-4 left-4 bg-white/80 px-4 py-2 rounded-lg shadow-md text-sm text-gray-700">
+          Duration: <strong>{{ destination.duration }}</strong>
+        </div>
+      </div>
+
+      <div class="p-8">
+        <h1 class="text-4xl font-bold mb-3 text-gray-900">{{ destination.title }}</h1>
+        <p class="text-gray-500 mb-6 text-sm tracking-wide uppercase">{{ destination.location }}</p>
+        <p class="text-base text-gray-700 leading-relaxed mb-8">{{ destination.details }}</p>
+
+        {% if destination.extra_details %}
+          <div class="mb-10">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Day-wise Itinerary</h2>
+            <div class="bg-gray-50 border-l-4 border-blue-500 p-4 rounded-lg">
+              <p class="whitespace-pre-line text-gray-700 text-sm leading-relaxed">{{ destination.extra_details.plan }}</p>
+            </div>
+          </div>
+
+
+          <div class="mb-10">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">includes & Notes</h2>
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg">
+              <p class="whitespace-pre-line text-gray-700 text-sm leading-relaxed">{{ destination.extra_details.notes }}</p>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="flex justify-between items-center mt-8 border-t pt-6">
+          <p class="text-3xl font-extrabold text-pink-600">₹{{ destination.price }}</p>
+          <a href="{% url 'web:book_destination' destination.id %}" class="bg-pink-500 hover:bg-pink-600 transition-all text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

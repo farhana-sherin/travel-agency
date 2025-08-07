@@ -27,17 +27,17 @@
    
     <nav class="sm:hidden md:block">
       <ul class="flex gap-6 font-semibold text-base">
-        <li><a href="#" class="hover:text-yellow-400">HOME</a></li>
-        <li><a href="#" class="hover:text-yellow-400">DESTINATIONS</a></li>
-        <li><a href="#" class="hover:text-yellow-400">BOOKING</a></li>
-        <li><a href="#" class="hover:text-yellow-400">ABOUT US</a></li>
+        <li><a href="{% url 'web:index' %}" class="hover:text-orange-500">HOME</a></li>
+      <li><a href="{% url 'web:destination_list' %}" class="hover:text-orange-500">DESTINATIONS</a></li>
+        <li><a href="{% url 'web:bookings' %}" class="hover:text-orange-500">BOOKING</a></li>
+        <li><a href="#" class="hover:text-orange-500">ABOUT US</a></li>
       </ul>
     </nav>
 
     
-    <div class="flex gap-4 mt-4 md:mt-0">
-      <a href="#" class="font-semibold text-sm sm:text-base hover:text-yellow-400">sign up</a>
-      <a href="#" class="font-semibold text-sm sm:text-base hover:text-yellow-400">logout</a>
+    <div class="flex gap-7 mt-4 md:mt-0">
+      <a href="{% url 'web:login' %}" class="font-semibold text-lg sm:text-lg hover:text-orange-500">Sign Up</a>
+      <a href="{% url 'web:logout' %}" class="font-semibold text-lg sm:text-lg hover:text-orange-500">Logout</a>
     </div>
   </div>
 
@@ -394,6 +394,7 @@
     }
   });
 </script>
+
 
 
 

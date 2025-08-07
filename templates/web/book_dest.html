@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book {{ destination.name }} | Fady Travel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <div class="max-w-2xl mx-auto bg-white p-8 mt-10 rounded-xl shadow-md">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Book Your Trip to {{ destination.name }}</h1>
+
+    <form method="post" class="space-y-5">
+     
+      {% csrf_token %}
+       
+      <div>
+        <label for="id_customer" class="block text-sm font-semibold text-gray-700 mb-1">Customer</label>
+        <input type="text" name="customer" id="id_customer" value="{{ customer.user.email }}" readonly
+               class="w-full px-4 py-2 border border-gray-300 rounded bg-gray-100 cursor-not-allowed">
+      </div>
+
+      
+
+      <!-- Travel Date -->
+      <div>
+        <label for="id_travel_date" class="block text-sm font-semibold text-gray-700 mb-1">Travel Date</label>
+        <input type="date" name="travel_date" id="id_travel_date"
+               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <!-- Number of People -->
+      <div>
+        <label for="id_num_people" class="block text-sm font-semibold text-gray-700 mb-1">Number of People</label>
+        <input type="number" name="num_people" id="id_num_people" min="1"
+               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-colors">
+    Confirm Booking
+</button>
+    </form>
+  </div>
+
+</body>
+</html>

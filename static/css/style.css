@@ -69,3 +69,14 @@
       .delay-400 {
         animation-delay: 0.4s;
       }
+
+  .slide-down {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  .slide-down.show {
+    max-height: 500px; /* large enough to reveal full content */
+  }
+
