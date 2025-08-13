@@ -15,8 +15,8 @@ urlpatterns = [
     path('booking/success/', views.booking_success, name='booking_success'),
     path('my-bookings/', views.bookings, name='bookings'),
     path('booking/<int:id>/', views.booking_detail, name='booking_detail'),
-    path('create-payment-intent/<int:id>/', views.create_payment_intent, name='create_payment_intent'),
-    path('payment-success/<int:id>/', views.payment_success, name='payment_success'),
+    
+    
     path('payment/<int:id>/', views.payment, name='payment'),
     path('spotlights/', views.spotlight_list, name='spotlight_list'),
     path('spotlights/<int:id>/', views.spotlight_detail, name='spotlight_detail'),

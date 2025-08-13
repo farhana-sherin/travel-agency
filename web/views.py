@@ -58,6 +58,7 @@ def spotlight_detail(request, id):
 
 
 def travelers_choice_list(request):
+    
     choices = TravelersChoice.objects.filter(featured=True)
     return render(request, 'web/traveler_choice_list.html', {'choices': choices})
 
@@ -69,19 +70,20 @@ def travelers_choice_detail(request, id):
 
 
 def categories_and_destinations(request):
-    category_choices = (Destination.CATEGORY_CHOICES)
-    selected_category = request.GET.get('category', None)
+    category_choices = [('all', 'All')] + list(Destination.CATEGORY_CHOICES)
+    selected_category = request.GET.get('category', 'all')  
 
-    if selected_category:
-        destinations = Destination.objects.filter(category=selected_category)
+    if selected_category == 'all':
+        destinations = Destination.objects.all()
     else:
-        destinations = Destination.objects.none()  # Empty until category selected
+        destinations = Destination.objects.filter(category=selected_category)
 
     return render(request, 'web/categories.html', {
         'categories': category_choices,
         'selected_category': selected_category,
         'destinations': destinations
     })
+
 
 
     

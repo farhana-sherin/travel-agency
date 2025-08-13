@@ -8,7 +8,7 @@
 <body class="bg-gradient-to-b from-orange-50 via-white to-orange-50 min-h-screen">
 
 <!-- Top Section -->
-<section class="relative text-center py-16 bg-gradient-to-r from-orange-400 to-red-400 text-white shadow-lg">
+<section class="relative text-center py-16 bg-gradient-to-r from-orange-50 text-amber-500 ">
     <div class="absolute top-5 left-5">
         <a href="{% url 'web:index' %}" 
            class="inline-flex items-center gap-2 px-5 py-2 bg-white text-orange-600 rounded-full shadow-md hover:bg-orange-100 transition">
@@ -16,9 +16,9 @@
         </a>
     </div>
     <h1 class="text-4xl md:text-5xl font-extrabold drop-shadow-lg">
-        Explore <span class="text-yellow-300">Your Next Journey</span>
+        Explore <span class="text-amber-500">Your Next Journey</span>
     </h1>
-    <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto opacity-90">
+    <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto opacity-90 text-red-600">
         Choose a category and discover destinations tailored for you
     </p>
 </section>
@@ -27,11 +27,14 @@
 <div class="flex justify-center gap-3 md:gap-4 flex-wrap px-4 mt-8">
     {% for cat in categories %}
         <a href="?category={{ cat.0 }}" 
-           class="px-6 py-2 rounded-full bg-gradient-to-r from-orange-300 to-red-400 text-white shadow-md hover:from-red-300 hover:to-orange-300 transition font-medium">
+           class="px-6 py-2 rounded-full 
+                  {% if selected_category == cat.0 %} bg-orange-500 text-white {% else %} bg-gradient-to-r from-orange-500 to-red-500 text-white {% endif %}
+                  shadow-md hover:from-red-300 hover:to-orange-300 transition font-medium">
            {{ cat.1 }}
         </a>
     {% endfor %}
 </div>
+
 
 <!-- Destinations -->
 <section class="max-w-7xl mx-auto px-4 py-12">
