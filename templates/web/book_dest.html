@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Destination</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-100 via-white to-gray-50 min-h-screen flex items-center justify-center p-4">
+
+  <div class="max-w-lg w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+    <!-- Destination Image -->
+    <div class="relative">
+      <img src="{{ destination.image.url }}" alt="{{ destination.name }}" class="w-full h-64 object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+        <h1 class="text-3xl font-bold text-white drop-shadow-lg">{{ destination.name }}</h1>
+      </div>
+    </div>
+
+    <!-- Destination Details -->
+    <div class="p-6">
+      <div class="flex justify-between mb-3">
+        <p class="text-gray-600 font-medium">Price per person</p>
+        <p class="text-lg font-semibold text-emerald-600">₹{{ destination.price }}</p>
+      </div>
+
+      <div class="flex justify-between mb-6">
+        <p class="text-gray-600 font-medium">Duration</p>
+        <p class="text-lg font-semibold text-blue-600">{{ destination.duration }} Days</p>
+      </div>
+
+      <!-- Booking Form -->
+      <form method="POST" class="space-y-5">
+        {% csrf_token %}
+
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Travel Date</label>
+          <input type="date" name="travel_date" required
+                 class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Number of People</label>
+          <input type="number" name="num_people" min="1" required
+                 class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+        </div>
+
+        <button type="submit" 
+          class="w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-semibold py-3 rounded-lg shadow-lg transform hover:scale-105 hover:shadow-xl transition duration-300">
+          Proceed to Payment
+        </button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

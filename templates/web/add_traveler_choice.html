@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Travel Choice</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-20 to-gray-100 min-h-screen flex items-center justify-center font-sans">
+
+  <form action="" method="post" enctype="multipart/form-data" class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+    {% csrf_token %}
+    <h2 class="text-3xl font-bold mb-6 text-gray-800">Add Your Travel Choice</h2>
+
+    <label class="block mb-2 font-semibold text-gray-700">Name</label>
+    <input type="text" name="name" required
+           class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+    <label class="block mb-2 font-semibold text-gray-700">Location</label>
+    <input type="text" name="location" required
+           class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+    <label class="block mb-2 font-semibold text-gray-700">Short Description</label>
+    <textarea name="short_description" rows="3" required
+              class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+    <label class="block mb-2 font-semibold text-gray-700">Full Description</label>
+    <textarea name="full_description" rows="5" required
+              class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+    <label class="block mb-2 font-semibold text-gray-700">Rating (1 to 5)</label>
+    <input type="number" name="rating" min="1" max="5" step="0.1" value="5.0"
+           class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+    <label class="block mb-2 font-semibold text-gray-700">Image</label>
+    <input type="file" name="image" accept="image/*"
+           class="w-full mb-6 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+    <button type="submit"
+            class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+      Submit
+    </button>
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fady Travel</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    
+   
+  </head>
+
+  <body>
+    <header class="bg-cover bg-no-repeat h-[100vh]" style="background-image: url('static/images/bg-1.png');">
+  <div class="w-[95%] mx-auto px-4 sm:px-6 md:px-8 -translate-y-12 flex flex-wrap justify-between items-center">
+
+    
+    <div class="mt-6">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" class="w-[160px] sm:w-[180px]">
+    </div>
+
+   
+    <nav class="sm:hidden md:block">
+      <ul class="flex gap-6 font-semibold text-base">
+        <li><a href="{% url 'web:index' %}" class="hover:text-orange-500">HOME</a></li>
+      <li><a href="{% url 'web:destination_list' %}" class="hover:text-orange-500">DESTINATIONS</a></li>
+        <li><a href="{% url 'web:bookings' %}" class="hover:text-orange-500">BOOKING</a></li>
+        <li><a href="#" class="hover:text-orange-500">ABOUT US</a></li>
+      </ul>
+    </nav>
+
+    
+    <div class="flex gap-7 mt-4 md:mt-0">
+      <a href="{% url 'web:login' %}" class="font-semibold text-lg sm:text-lg hover:text-orange-500">Sign Up</a>
+      <a href="{% url 'web:logout' %}" class="font-semibold text-lg sm:text-lg hover:text-orange-500">Logout</a>
+    </div>
+  </div>
+
+
+  <div class="w-[90%] mx-auto flex flex-col md:flex-row justify-between items-center">
+    <div class="px-4 sm:px-6 md:px-10 w-full md:w-[50%] mt-10 md:mt-0">
+      <p class="text-red-500 text-sm font-semibold uppercase mb-2">Best Destinations Around the World</p>
+      <h1 class="font-extrabold text-[30px] sm:text-[40px] md:text-[60px] leading-tight mb-4 font-sans">
+        Discover new places, live unforgettable moments.
+      </h1>
+      <p class="text-gray-700 mb-10 text-sm sm:text-base md:text-xl">
+        Travel isn’t just about places, it’s about experiences. We design trips that turn into lasting memories. Wherever you dream to go, we’ll take you there.
+      </p>
+      <a href="#" class="bg-red-500 text-white font-medium text-sm sm:text-base px-5 py-2 rounded-lg hover:bg-red-600 transition">Find out more</a>
+    </div>
+  </div>
+</header>
+
+<section class="py-28 bg-gradient-to-b from-[#f9f6f1] to-white">
+  <div class="text-center mb-20">
+    <h3 class="text-lg font-semibold tracking-[4px] text-amber-600 uppercase">Exclusive</h3>
+    <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+      This Week’s Luxury Picks
+    </h1>
+    <p class="mt-4 text-gray-500 max-w-2xl mx-auto text-lg">
+      Indulge in handpicked destinations and premium travel experiences.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-12 px-6">
+
+    <!-- Card -->
+    <a href="{% url 'web:spotlight_list'%}" 
+       class="group relative w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+      <img src="{% static '/images/spot.jpg' %}" alt="Spotlight" 
+           class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+      <div class="absolute bottom-0 p-6">
+        <h2 class="text-2xl font-bold text-white">Destination Spotlight</h2>
+        <p class="text-sm text-gray-200 mt-2">{{ spotlight.short_description }}</p>
+        <span class="inline-block mt-4 px-4 py-1 text-sm border hover:bg-amber-500 text-white rounded-full">Explore Now</span>
+      </div>
+    </a>
+
+    <!-- Card -->
+      <a href="{% url 'web:travelers_choice_list'%}" 
+        class="group relative w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="{% static '/images/choice.jpg' %}" alt="Traveler's Choice" 
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div class="absolute bottom-0 p-6">
+          <h2 class="text-2xl font-bold text-white">Traveler's Choice</h2>
+          <p class="text-sm text-gray-200 mt-2">Handpicked by fellow luxury travelers.</p>
+          <span class="inline-block mt-4 px-4 py-1 text-sm border hover:bg-amber-500 text-white rounded-full">Discover</span>
+        </div>
+      </a>
+
+   <!-- Card -->
+<a href="{% url 'web:categories_and_destinations'%}" 
+   class="group relative w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+  <img src="{% static '/images/adventure.jpg' %}" alt="Adventure Packages" 
+       class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+  <div class="absolute bottom-0 p-6">
+    <h2 class="text-2xl font-bold text-white">Adventure Packages</h2>
+    <p class="text-sm text-gray-200 mt-2">Thrilling experiences for every explorer.</p>
+    <span class="inline-block mt-4 px-4 py-1 text-sm border hover:bg-amber-500 text-white rounded-full">Book Now</span>
+  </div>
+</a>
+  </div>
+</section>
+
+
+<section class="py-28 bg-[#f4ebe13f] h-screen">
+   
+  <section class="w-[95%] mx-auto">
+    <div class="text-center mb-16">
+      <h3 class="text-xl font-semibold text-gray-600">Top Selling</h3>
+      <h1 class="text-[50px] font-bold uppercase text-[#4b2e1a]">Top Destinations</h1>
+    </div>
+
+    <div class="flex justify-center items-start gap-10 flex-wrap">
+  {% for dest in destinations %}
+  
+  <div class="w-[300px] bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
+    <a href="{% url 'web:destination_detail' dest.id %}">
+      <img src="{{ dest.image.url }}" alt="{{ dest.title }}" class="w-full h-[200px] object-cover">
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-lg font-semibold text-gray-800">{{ dest.title }}</h2>
+          <span class="text-sm text-gray-500">₹{{ dest.price }}</span>
+        </div>
+        <p class="text-sm text-gray-600">{{ dest.duration }} days trip</p>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+    
+      
+
+    </div>
+  </section>
+</section>
+
+
+<section class="py-20 px-6 md:px-16 bg-white">
+  <div class="flex justify-center items-center">
+  <div class="flex justify-between items-center w-[85%]">
+    
+    
+    
+    <div class=" space-y-6">
+      <p class="text-gray-500 text-lg font-medium">Easy and Fast</p>
+      <h2 class="text-4xl md:text-5xl font-bold  text-gray-900">
+        Book Your Next Trip <br />In 3 Easy Steps
+      </h2>
+
+      <div class="space-y-5 mt-8">
+       
+        <div class="flex items-start gap-4">
+          <span class="w-10 h-10 bg-yellow-400 rounded-md flex items-center justify-center text-white font-bold">1</span>
+          <div>
+            <h4 class="font-semibold text-lg text-gray-800">Choose Destination</h4>
+            <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipiscing elit amet mauris tempus.</p>
+          </div>
+        </div>
+     
+        <div class="flex items-start gap-4">
+          <span class="w-10 h-10 bg-orange-500 rounded-md flex items-center justify-center text-white font-bold">2</span>
+          <div>
+            <h4 class="font-semibold text-lg text-gray-800">Make Payment</h4>
+            <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipiscing elit amet mauris tempus.</p>
+          </div>
+        </div>
+       
+        <div class="flex items-start gap-4">
+          <span class="w-10 h-10 bg-blue-700 rounded-md flex items-center justify-center text-white font-bold">3</span>
+          <div>
+            <h4 class="font-semibold text-lg text-gray-800">Reach Airport on Selected Date</h4>
+            <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipiscing elit amet mauris tempus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="w-[50%]">
+      <div class="rounded-xl shadow-lg overflow-hidden max-w-xl bg-white">
+        <img src="{% static 'images/people.jpg' %}" alt="" class="w-full h-full object-cover">
+        
+        </div>
+      </div>
+
+      
+  </div>
+  </div>
+</section>
+<section class="w-full py-20 bg-[#f8f9fa]">
+  <div class="text-center">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 uppercase">what our travelers say</h1>
+    <p class="text-lg px-4 md:px-20 text-gray-600 font-medium mt-4" style="font-family: 'Inter', sans-serif;">
+      These aren’t just reviews — they’re stories of trust and unforgettable memories.
+    </p>
+  </div>
+
+  <div class="swiper mySwiper mt-16 px-6 max-w-6xl mx-auto">
+    <div class="swiper-wrapper">
+      
+      <!-- Slide 1 -->
+      <div class="swiper-slide bg-white border border-gray-200 rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300">
+        <div class="flex items-center gap-4 mb-6">
+          <img src="{% static 'images/user.jpeg' %}" class="w-16 h-16 rounded-full ring-2 ring-blue-200 object-cover" />
+          <div>
+            <h4 class="text-md font-semibold text-gray-800">Anjali Mehra</h4>
+            <span class="text-sm text-gray-500">Solo Traveler, Kerala</span>
+          </div>
+        </div>
+        <p class="text-gray-700 text-base italic leading-relaxed">
+          “Booking with Fady Travel was the best decision for our vacation. Everything was perfect!”
+        </p>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide bg-white border border-gray-200 rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300">
+        <div class="flex items-center gap-4 mb-6">
+          <img src="{% static 'images/user3.jpeg' %}" class="w-16 h-16 rounded-full ring-2 ring-pink-200 object-cover" />
+          <div>
+            <h4 class="text-md font-semibold text-gray-800">Maya Meccha</h4>
+            <span class="text-sm text-gray-500">Traveler, Hyderabad</span>
+          </div>
+        </div>
+        <p class="text-gray-700 text-base italic leading-relaxed">
+          “Every detail was thoughtfully planned — we couldn’t have asked for a better travel experience!”
+        </p>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide bg-white border border-gray-200 rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300">
+        <div class="flex items-center gap-4 mb-6">
+          <img src="{% static 'images/user4.avif' %}" class="w-16 h-16 rounded-full ring-2 ring-green-200 object-cover" />
+          <div>
+            <h4 class="text-md font-semibold text-gray-800">Arav</h4>
+            <span class="text-sm text-gray-500">Family, Gujarat</span>
+          </div>
+        </div>
+        <p class="text-gray-700 text-base italic leading-relaxed">
+          “Fady Travel took the stress out of planning — we just showed up and enjoyed!”
+        </p>
+      </div>
+       <div class="swiper-slide bg-white border border-gray-200 rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300">
+        <div class="flex items-center gap-4 mb-6">
+          <img src="{% static 'images/user4.avif' %}" class="w-16 h-16 rounded-full ring-2 ring-green-200 object-cover" />
+          <div>
+            <h4 class="text-md font-semibold text-gray-800">Arav</h4>
+            <span class="text-sm text-gray-500">Family, Gujarat</span>
+          </div>
+        </div>
+        <p class="text-gray-700 text-base italic leading-relaxed">
+          “Fady Travel took the stress out of planning — we just showed up and enjoyed!”
+        </p>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="w-[95%] mx-auto py-20 flex justify-center items-center bg-white">
+  <div class="w-full max-w-4xl px-6 py-14 rounded-3xl shadow-2xl backdrop-blur-sm bg-white/90 border border-gray-200 text-center">
+
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-snug mb-6 px-2">
+      Stay Updated with Us
+    </h2>
+    <p class="text-gray-600 text-lg md:text-lg mb-10 px-4 font-medium">
+      Subscribe to receive exclusive offers, travel tips, and the latest updates from Fady Travel.
+    </p>
+
+    <form class="flex flex-col sm:flex-row justify-center items-center gap-4 px-4">
+      <input
+        type="text"
+        placeholder="Enter your mobile number"
+        class="w-full sm:w-[320px] px-5 py-3 rounded-full bg-white shadow-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300 text-gray-800 placeholder-gray-500"
+      />
+      <button
+        type="submit"
+        class="bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-red-400/50 transition-all duration-300 text-lg font-semibold"
+      >
+        Subscribe
+      </button>
+    </form>
+  </div>
+</section>
+
+<footer class="bg-[#1a3a4c] text-white py-16">
+  <div class="max-w-7xl mx-auto flex justify-between items-start">
+
+    <div class="flex flex-col items-start space-y-4">
+      <img src="{% static 'images/log1.png' %}" alt="Logo" class=" h-[100px] bg-white rounded-full">
+      <p class="text-gray-300 text-lg leading-relaxed max-w-xs">
+        "Fady Travel is your trusted companion in unforgettable journeys. From smooth bookings to lifetime memories, we handle everything."
+      </p>
+    </div>
+
+ 
+    <div class="flex justify-start items-start gap-36 flex-wrap ">
+
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Home</h3>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="#" class="hover:text-white transition text-lg">About Us</a></li>
+          <li><a href="#" class="hover:text-white transition text-lg">Services</a></li>
+          <li><a href="#" class="hover:text-white transition text-lg">Contact Me</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="#" class="hover:text-white transition text-lg">Booking</a></li>
+          <li><a href="#" class="hover:text-white transition text-lg">Careers</a></li>
+          <li><a href="#" class="hover:text-white transition text-lg">Destinations</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+        <ul class="text-gray-300 text-sm space-y-2">
+          <li>Email: <a href="mailto:hello@fadytravel.com" class="hover:text-white">hello@fadytravel.com</a></li>
+          <li>Phone: <a href="tel:+919876543210" class="hover:text-white">+91 98765 43210</a></li>
+          <li>Location: Kerala, India</li>
+        </ul>
+      </div>
+    </div>
+
+
+  <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 text-sm">
+    &copy; 2025 Fady Travel. All rights reserved.
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+      delay: 3500,
+    },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 }
+    }
+  });
+</script>
+
+
+
+
+</body>
+</html>

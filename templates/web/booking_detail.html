@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Details - {{ booking.destination.name }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans p-8">
+    <div class="max-w-3xl mx-auto bg-white p-8 rounded shadow">
+        <h1 class="text-3xl font-bold mb-6">Booking Details for {{ booking.destination.name }}</h1>
+
+        <div class="mb-4">
+            <strong>Customer:</strong> {{ booking.customer.user.email }}<br>
+            <strong>Booking Date:</strong> {{ booking.booking_date }}<br>
+            <strong>Travel Date:</strong> {{ booking.travel_date }}<br>
+            <strong>Number of People:</strong> {{ booking.num_people }}<br>
+            <strong>Booking Status:</strong>
+            {% if booking.is_paid %}
+                <span class="text-green-600 font-semibold">Paid</span>
+            {% else %}
+                <span class="text-red-600 font-semibold">Pending Payment</span>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <strong>Amount Paid:</strong>
+            {% if booking.amount_paid %}
+                ₹{{ booking.amount_paid}}
+            {% else %}
+                ₹0.00
+            {% endif %}
+            <br>
+            <strong>Payment Intent ID:</strong> {{ booking.payment_intent_id|default:"N/A" }}<br>
+            <strong>Payment Date:</strong> {{ booking.payment_date|date:"F j, Y, g:i a" | default:"N/A" }}
+        </div>
+
+        <div class="mb-4">
+            <strong>Destination Details:</strong><br>
+            {{ booking.destination.name }}<br>
+            {{ booking.destination.description }}<br>
+            Price per person: ₹{{ booking.destination.price }}<br>
+            Duration: {{ booking.destination.days }} days
+        </div>
+
+        <a href="{% url 'web:bookings' %}" class="inline-block mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+            Back to My Bookings
+        </a>
+    </div>
+</body>
+</html>

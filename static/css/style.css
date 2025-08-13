@@ -1,0 +1,82 @@
+
+      @keyframes fade-in-down {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes zoom-in {
+        0% {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes slide-in-left {
+        0% {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fade-in {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .animate-fade-in-down {
+        animation: fade-in-down 1s ease-out forwards;
+      }
+
+      .animate-zoom-in {
+        animation: zoom-in 0.8s ease-out forwards;
+      }
+
+      .animate-slide-in-left {
+        animation: slide-in-left 0.8s ease-out forwards;
+      }
+
+      .animate-fade-in {
+        animation: fade-in 1s ease forwards;
+      }
+
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+
+  .slide-down {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  .slide-down.show {
+    max-height: 500px; /* large enough to reveal full content */
+  }
+

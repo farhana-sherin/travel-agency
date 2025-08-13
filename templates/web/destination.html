@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations | Fady Travel</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap');
+    .heading-title {
+      font-family: 'Playfair Display', serif;
+    }
+    .intro-text {
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <section class="bg-[#fdfafa]">
+  <section class="py-20  rounded-xl w-[90%] mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h1 class="text-4xl font-bold text-gray-800 heading-title">Top Destinations</h1>
+      <p class="text-gray-500 mt-4 text-base intro-text px-4">
+        Discover the world’s most breathtaking places — handpicked for unforgettable adventures, romantic getaways, and soul-soothing escapes.
+      </p>
+      <div class="w-20 h-1 bg-pink-500 mt-6 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-x-7 gap-y-8 justify-center">
+
+{% for dest in destinations %}
+
+ 
+
+  <div class="destination-card shadow-md rounded-lg overflow-hidden bg-white transition-transform hover:scale-105 duration-300">
+   <a href="{% url 'web:destination_detail' dest.id %}" >
+    <img src="{{ dest.image.url }}" alt="{{ dest.name }}" class="h-40 w-full object-cover">
+    </a>
+    <div class="p-4">
+       <div class="flex justify-between items-center mb-2">
+      <h2 class="text-xl font-bold text-gray-800">{{ dest.title }}</h2>
+      
+        <button onclick="toggleDescription(this)" class="text-sm text-blue-600 flex items-center gap-1 hover:underline focus:outline-none">
+          <span class="toggle-text"></span>
+          <svg class="arrow-icon w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        </div>
+      
+      <p class="text-xs text-gray-500 mb-2">{{ dest.location }}</p>
+      <p class="description max-h-0 overflow-hidden transition-all duration-500 ease-in-out text-sm mt-2 text-gray-700">
+        {{ dest.description }}
+      </p>
+  
+      
+
+      <div class="flex justify-between items-center mt-4">
+        <p class="text-base font-semibold text-pink-600">₹{{ dest.price }}</p>
+        <p class="text-base font-semibold text-gray-600">{{ dest.duration }} days</p>
+      </div>
+    </div>
+
+  </div>
+    
+
+
+
+{% endfor %}
+
+
+
+
+    </div>
+  </section>
+  </section>
+
+<script src="{% static 'script.js' %}"></script>
+
+
+
+</body>
+</html>
