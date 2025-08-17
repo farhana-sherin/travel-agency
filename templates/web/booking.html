@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>My Bookings</title>
   <script src="https://cdn.tailwindcss.com"></script>
-   <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://js.stripe.com/v3/"></script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -12,45 +12,48 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-b from-white to-gray-100 text-gray-800 min-h-screen">
+<body class="bg-gradient-to-b from-orange-50 to-amber-50 text-gray-900 min-h-screen">
+
   <div class="max-w-7xl mx-auto px-6 py-16">
-    <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">My Travel Bookings</h1>
-      <p class="text-lg text-gray-500 mt-3">Track all your upcoming and past adventures</p>
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-orange-600 tracking-tight">My Travel Bookings</h1>
+      <p class="text-lg md:text-xl text-orange-400 mt-4">Track all your upcoming and past adventures in one place</p>
     </div>
 
     {% if bookings %}
-      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
         {% for booking in bookings %}
-          <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition duration-300">
-            <div class="p-6">
-              <h2 class="text-2xl font-semibold text-indigo-600 mb-1">{{ booking.destination.title }}</h2>
-              <p class="text-sm text-gray-500 mb-4">{{ booking.destination.location }}</p>
+          <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-orange-200 hover:scale-105 transform transition duration-500 relative">
+            <!-- Status Badge -->
+            <span class="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold uppercase px-3 py-1 rounded-full shadow-lg">
+              {% if booking.travel_date > today %}Upcoming{% else %}Completed{% endif %}
+            </span>
 
-              <ul class="text-sm text-gray-700 space-y-1 mb-6">
+            <div class="p-8">
+              <h2 class="text-2xl md:text-3xl font-bold text-orange-600 mb-2">{{ booking.destination.title }}</h2>
+              <p class="text-sm md:text-base text-orange-400 mb-6">{{ booking.destination.location }}</p>
+
+              <ul class="text-gray-700 space-y-2 mb-6">
                 <li><span class="font-medium">Booked on:</span> {{ booking.booking_date }}</li>
                 <li><span class="font-medium">Travel date:</span> {{ booking.travel_date }}</li>
                 <li><span class="font-medium">People:</span> {{ booking.num_people }}</li>
               </ul>
 
-              <a href="{% url 'web:booking_detail' booking.id %}" class="inline-block text-indigo-600 font-medium hover:underline text-sm">
-                View Details &rarr;
+              <a href="{% url 'web:booking_detail' booking.id %}" 
+                 class="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium py-2 px-6 rounded-full shadow hover:brightness-105 transition duration-300">
+                 View Details
               </a>
             </div>
           </div>
         {% endfor %}
       </div>
     {% else %}
-      <div class="text-center text-gray-400 text-lg mt-20">
-        <p>No bookings found. Let’s plan your next journey!</p>
+      <div class="text-center text-orange-300 text-lg mt-24">
+        <p>No bookings found. Let’s plan your next adventure!</p>
       </div>
     {% endif %}
-
-    
   </div>
 
-
-
-  
 </body>
 </html>

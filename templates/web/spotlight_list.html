@@ -69,7 +69,7 @@
             <img src="{{ s.image.url }}" alt="{{ s.title }}" class="w-full h-[420px] object-cover img-zoom">
             <div class="glass-overlay">
               <h3 class="font-semibold text-lg">{{ s.title }}</h3>
-              <p class="text-sm opacity-80">{{ s.short_description|truncatewords:12 }}</p>
+              <p class="text-sm opacity-80">{{ s.short_description}}</p>
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@
               <h2 class="text-2xl md:text-3xl font-bold leading-tight">{{ s.title }}</h2>
               <span class="px-3 py-1 rounded-full text-sm text-white bg-gradient-to-r from-amber-500 to-orange-500 shadow">Spotlight</span>
             </div>
-            <p class="text-gray-600 leading-relaxed mb-6">{{ s.short_description|truncatewords:35 }}</p>
+            <p class="text-gray-600 leading-relaxed mb-6">{{ s.short_description}}</p>
             <a href="{% url 'web:spotlight_detail' s.id %}" class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium shadow hover:brightness-105 transition">
               Read Full Story
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>

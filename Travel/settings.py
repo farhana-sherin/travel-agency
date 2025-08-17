@@ -1,9 +1,15 @@
 
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# Stripe API keys
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY', default='')
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY', default='')
+SITE_URL = config('SITE_URL', default='http://localhost:8000')
+STRIPE_CURRENCY = "usd"
 
 
 

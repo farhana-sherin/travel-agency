@@ -16,7 +16,8 @@
   </head>
 
   <body>
-    <header class="bg-cover bg-no-repeat h-[100vh]" style="background-image: url('static/images/bg-1.png');">
+    <header class="bg-cover bg-no-repeat h-[100vh]" style="background-image: url('static/images/bg-1.png')">
+
   <div class="w-[95%] mx-auto px-4 sm:px-6 md:px-8 -translate-y-12 flex flex-wrap justify-between items-center">
 
     
@@ -41,20 +42,60 @@
     </div>
   </div>
 
+<div class="w-[90%] mx-auto flex flex-col md:flex-row justify-between items-center py-12 ">
+  <!-- Text Section -->
+  <div class="px-4 sm:px-6 md:px-10  md:w-[50%] sm:w-[55%] ">
+    <!-- Small label -->
+    <p class="text-orange-600 text-sm font-semibold uppercase tracking-widest mb-4">
+      Best Destinations Around the World
+    </p>
 
-  <div class="w-[90%] mx-auto flex flex-col md:flex-row justify-between items-center">
-    <div class="px-4 sm:px-6 md:px-10 w-full md:w-[50%] mt-10 md:mt-0">
-      <p class="text-red-500 text-sm font-semibold uppercase mb-2">Best Destinations Around the World</p>
-      <h1 class="font-extrabold text-[30px] sm:text-[40px] md:text-[60px] leading-tight mb-4 font-sans">
-        Discover new places, live unforgettable moments.
-      </h1>
-      <p class="text-gray-700 mb-10 text-sm sm:text-base md:text-xl">
-        Travel isn’t just about places, it’s about experiences. We design trips that turn into lasting memories. Wherever you dream to go, we’ll take you there.
-      </p>
-      <a href="#" class="bg-red-500 text-white font-medium text-sm sm:text-base px-5 py-2 rounded-lg hover:bg-red-600 transition">Find out more</a>
-    </div>
+    <!-- Main heading -->
+    <h1 class="font-extrabold text-[34px] sm:text-[48px] md:text-[55px] leading-snug font-serif mb-2 text-gray-900">
+      Discover new places, <span class="text-amber-600">live unforgettable moments</span>.
+    </h1>
+
+    <!-- Description -->
+    <p class="text-gray-600 mb-4 text-sm sm:text-base md:text-lg">
+      Travel isn’t just about places, it’s about experiences. We design trips that turn into lasting memories. Wherever you dream to go, we’ll take you there.
+    </p>
+
+    <!-- Button -->
+    <a href="#" class="inline-block bg-orange-600 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-700 transition duration-300">
+      Find out more
+    </a>
   </div>
 </header>
+<section class="py-28 bg-[#f4ebe13f] h-screen">
+   
+  <section class="w-[95%] mx-auto">
+    <div class="text-center mb-16">
+      <h3 class="text-xl font-semibold text-gray-600">Top Selling</h3>
+      <h1 class="text-[50px] font-bold uppercase text-[#4b2e1a]">Top Destinations</h1>
+    </div>
+
+    <div class="flex justify-center items-start gap-10 flex-wrap">
+  {% for dest in destinations %}
+  
+  <div class="w-[300px] bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
+    <a href="{% url 'web:destination_detail' dest.id %}">
+      <img src="{{ dest.image.url }}" alt="{{ dest.title }}" class="w-full h-[200px] object-cover">
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-lg font-semibold text-gray-800">{{ dest.title }}</h2>
+          <span class="text-sm text-gray-500">₹{{ dest.price }}</span>
+        </div>
+        <p class="text-sm text-gray-600">{{ dest.duration }} days trip</p>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+    
+      
+
+    </div>
+  </section>
+</section>
 
 <section class="py-28 bg-gradient-to-b from-[#f9f6f1] to-white">
   <div class="text-center mb-20">
@@ -102,44 +143,12 @@
        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
   <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
   <div class="absolute bottom-0 p-6">
-    <h2 class="text-2xl font-bold text-white">Adventure Packages</h2>
+    <h2 class="text-2xl font-bold text-white">Explore Packages</h2>
     <p class="text-sm text-gray-200 mt-2">Thrilling experiences for every explorer.</p>
     <span class="inline-block mt-4 px-4 py-1 text-sm border hover:bg-amber-500 text-white rounded-full">Book Now</span>
   </div>
 </a>
   </div>
-</section>
-
-
-<section class="py-28 bg-[#f4ebe13f] h-screen">
-   
-  <section class="w-[95%] mx-auto">
-    <div class="text-center mb-16">
-      <h3 class="text-xl font-semibold text-gray-600">Top Selling</h3>
-      <h1 class="text-[50px] font-bold uppercase text-[#4b2e1a]">Top Destinations</h1>
-    </div>
-
-    <div class="flex justify-center items-start gap-10 flex-wrap">
-  {% for dest in destinations %}
-  
-  <div class="w-[300px] bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
-    <a href="{% url 'web:destination_detail' dest.id %}">
-      <img src="{{ dest.image.url }}" alt="{{ dest.title }}" class="w-full h-[200px] object-cover">
-      <div class="p-4">
-        <div class="flex justify-between items-center mb-2">
-          <h2 class="text-lg font-semibold text-gray-800">{{ dest.title }}</h2>
-          <span class="text-sm text-gray-500">₹{{ dest.price }}</span>
-        </div>
-        <p class="text-sm text-gray-600">{{ dest.duration }} days trip</p>
-      </div>
-    </a>
-  </div>
-  {% endfor %}
-    
-      
-
-    </div>
-  </section>
 </section>
 
 
@@ -295,53 +304,67 @@
     </form>
   </div>
 </section>
+<footer class="bg-gradient-to-r from-orange-500  to-amber-500 text-gray-900 py-24">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-4 gap-12">
 
-<footer class="bg-[#1a3a4c] text-white py-16">
-  <div class="max-w-7xl mx-auto flex justify-between items-start">
-
-    <div class="flex flex-col items-start space-y-4">
-      <img src="{% static 'images/log1.png' %}" alt="Logo" class=" h-[100px] bg-white rounded-full">
-      <p class="text-gray-300 text-lg leading-relaxed max-w-xs">
-        "Fady Travel is your trusted companion in unforgettable journeys. From smooth bookings to lifetime memories, we handle everything."
+   
+    <div class="flex flex-col space-y-4">
+     <h1 class="text-4xl font-extrabold text-orange-900 tracking-wide leading-tight ">
+    Fady<br>
+    <span class="text-black transition duration-300 text-5xl">Travel</span>
+  </h1>
+      <p class="text-gray-900 text-base leading-relaxed">
+        Explore the world with Fady Travel. Premium experiences, tailored journeys, unforgettable memories.
       </p>
-    </div>
-
- 
-    <div class="flex justify-start items-start gap-36 flex-wrap ">
-
-      <div>
-        <h3 class="text-xl font-semibold mb-4">Home</h3>
-        <ul class="space-y-2 text-gray-300 text-sm">
-          <li><a href="#" class="hover:text-white transition text-lg">About Us</a></li>
-          <li><a href="#" class="hover:text-white transition text-lg">Services</a></li>
-          <li><a href="#" class="hover:text-white transition text-lg">Contact Me</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-        <ul class="space-y-2 text-gray-300 text-sm">
-          <li><a href="#" class="hover:text-white transition text-lg">Booking</a></li>
-          <li><a href="#" class="hover:text-white transition text-lg">Careers</a></li>
-          <li><a href="#" class="hover:text-white transition text-lg">Destinations</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
-        <ul class="text-gray-300 text-sm space-y-2">
-          <li>Email: <a href="mailto:hello@fadytravel.com" class="hover:text-white">hello@fadytravel.com</a></li>
-          <li>Phone: <a href="tel:+919876543210" class="hover:text-white">+91 98765 43210</a></li>
-          <li>Location: Kerala, India</li>
-        </ul>
+      <div class="flex space-x-4 mt-2">
+        <a href="#" class="p-2 bg-gray-100 rounded-full hover:bg-white transition text-orange-500">🌐</a>
+        <a href="#" class="p-2 bg-gray-100 rounded-full hover:bg-white transition text-orange-500">📘</a>
+        <a href="#" class="p-2 bg-gray-100 rounded-full hover:bg-white transition text-orange-500">🐦</a>
       </div>
     </div>
 
+    <!-- Explore -->
+    <div>
+      <h3 class="text-white font-bold text-lg mb-4 uppercase">Explore</h3>
+      <ul class="space-y-2 text-gray-900">
+        <li><a href="#" class="hover:text-white transition">Home</a></li>
+        <li><a href="#" class="hover:text-white transition">Destinations</a></li>
+        <li><a href="#" class="hover:text-white transition">Services</a></li>
+        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+      </ul>
+    </div>
 
-  <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 text-sm">
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-white font-bold text-lg mb-4 uppercase">Quick Links</h3>
+      <ul class="space-y-2 text-gray-900">
+        <li><a href="#" class="hover:text-white transition">Booking</a></li>
+        <li><a href="#" class="hover:text-white transition">Packages</a></li>
+        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <h3 class="text-white font-bold text-lg mb-4 uppercase">Contact Us</h3>
+      <ul class="space-y-2 text-gray-900">
+        <li>Email: <a href="mailto:hello@fadytravel.com" class="hover:text-white transition">hello@fadytravel.com</a></li>
+        <li>Phone: <a href="tel:+919876543210" class="hover:text-white transition">+91 98765 43210</a></li>
+        <li>Location: Kerala, India</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="mt-16 border-t border-white/30 pt-6 text-center text-white/80 text-sm">
     &copy; 2025 Fady Travel. All rights reserved.
   </div>
 </footer>
+
+
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>

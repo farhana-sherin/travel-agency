@@ -1,49 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Details - {{ booking.destination.name }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans p-8">
-    <div class="max-w-3xl mx-auto bg-white p-8 rounded shadow">
-        <h1 class="text-3xl font-bold mb-6">Booking Details for {{ booking.destination.name }}</h1>
+<body class="bg-gradient-to-r from-gray-100 to-gray-200 font-sans min-h-screen flex items-center justify-center p-6">
 
-        <div class="mb-4">
-            <strong>Customer:</strong> {{ booking.customer.user.email }}<br>
-            <strong>Booking Date:</strong> {{ booking.booking_date }}<br>
-            <strong>Travel Date:</strong> {{ booking.travel_date }}<br>
-            <strong>Number of People:</strong> {{ booking.num_people }}<br>
-            <strong>Booking Status:</strong>
-            {% if booking.is_paid %}
-                <span class="text-green-600 font-semibold">Paid</span>
-            {% else %}
-                <span class="text-red-600 font-semibold">Pending Payment</span>
-            {% endif %}
+    <div class="max-w-4xl w-full bg-white shadow-2xl rounded-2xl overflow-hidden">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-orange-500 to-amber-500 text-white p-8">
+            <h1 class="text-3xl font-extrabold tracking-wide">Booking Details</h1>
+            <p class="text-lg mt-2">For {{ booking.destination.title }}</p>
         </div>
 
-        <div class="mb-4">
-            <strong>Amount Paid:</strong>
-            {% if booking.amount_paid %}
-                ₹{{ booking.amount_paid}}
-            {% else %}
-                ₹0.00
-            {% endif %}
-            <br>
-            <strong>Payment Intent ID:</strong> {{ booking.payment_intent_id|default:"N/A" }}<br>
-            <strong>Payment Date:</strong> {{ booking.payment_date|date:"F j, Y, g:i a" | default:"N/A" }}
-        </div>
+        <!-- Content -->
+        <div class="p-8 space-y-6">
+            
+            <!-- Booking Info -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-5 rounded-xl shadow">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">Customer Information</h2>
+                    <p><span class="font-medium">Email:</span> {{ booking.customer.user.email }}</p>
+                    <p><span class="font-medium">Booking Date:</span> {{ booking.booking_date }}</p>
+                    <p><span class="font-medium">Travel Date:</span> {{ booking.travel_date }}</p>
+                    <p><span class="font-medium">Number of People:</span> {{ booking.num_people }}</p>
+                </div>
 
-        <div class="mb-4">
-            <strong>Destination Details:</strong><br>
-            {{ booking.destination.name }}<br>
-            {{ booking.destination.description }}<br>
-            Price per person: ₹{{ booking.destination.price }}<br>
-            Duration: {{ booking.destination.days }} days
-        </div>
+                <div class="bg-gray-50 p-5 rounded-xl shadow">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">Payment Status</h2>
+                    <p>
+                        <span class="font-medium">Status:</span>
+                        {% if booking.is_paid %}
+                            <span class="text-green-600 font-bold">✔ Paid</span>
+                        {% else %}
+                            <span class="text-red-600 font-bold">⏳ Pending Payment</span>
+                        {% endif %}
+                    </p>
+                    <p>
+                        <span class="font-medium">Amount Paid:</span>
+                        {% if booking.amount_paid %}
+                            ₹{{ booking.amount_paid }}
+                        {% else %}
+                            ₹0.00
+                        {% endif %}
+                    </p>
+                    {% if booking.is_paid %}
+                        <p><span class="font-medium">Payment Intent ID:</span> {{ booking.payment_intent_id }}</p>
+                        <p><span class="font-medium">Payment Date:</span> {{ booking.payment_date|date:"F j, Y, g:i a" }}</p>
+                    {% endif %}
+                </div>
+            </div>
 
-        <a href="{% url 'web:bookings' %}" class="inline-block mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-            Back to My Bookings
-        </a>
+            <!-- Destination Info -->
+            <div class="bg-gray-50 p-5 rounded-xl shadow">
+                <h2 class="text-xl font-semibold text-gray-800 mb-3">Destination Details</h2>
+                <p><span class="font-medium">Name:</span> {{ booking.destination.title }}</p>
+                <p><span class="font-medium">Description:</span> {{ booking.destination.description }}</p>
+                <p><span class="font-medium">Price per person:</span> ₹{{ booking.destination.price }}</p>
+                <p><span class="font-medium">Duration:</span> {{ booking.destination.duration }} days</p>
+            </div>
+
+            <!-- Action Button -->
+            <div class="flex justify-end">
+                <a href="{% url 'web:bookings' %}" 
+                   class="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium rounded-lg shadow-lg hover:opacity-90 transition">
+                    ← Back to My Bookings
+                </a>
+            </div>
+        </div>
     </div>
+
 </body>
 </html>
