@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Review | Fady Travel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+  <section class="w-full py-20 flex justify-center">
+    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-lg p-8">
+      <h1 class="text-2xl font-bold text-gray-900 mb-6">Share Your Travel Experience</h1>
+
+      <form method="POST" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Name</label>
+          <input type="text" name="name" required
+                 class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Location</label>
+          <input type="text" name="location"
+                 class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Your Review</label>
+          <textarea name="comment" rows="4" required
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 focus:outline-none"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Rating (1-5)</label>
+          <select name="rating" required
+                  class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 focus:outline-none">
+            <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+            <option value="4">⭐⭐⭐⭐ (4)</option>
+            <option value="3">⭐⭐⭐ (3)</option>
+            <option value="2">⭐⭐ (2)</option>
+            <option value="1">⭐ (1)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Upload Profile Image (optional)</label>
+          <input type="file" name="user_image" accept="image/*"
+                 class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 focus:outline-none">
+        </div>
+
+        <button type="submit"
+                class="w-full bg-orange-600 text-white font-semibold py-3 rounded-lg hover:bg-orange-700 transition">
+          Submit Review
+        </button>
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>

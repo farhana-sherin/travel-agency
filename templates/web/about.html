@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Fady Travel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-orange-600 to-amber-500 text-white py-24 text-center">
+    <h1 class="text-5xl md:text-6xl font-bold uppercase tracking-wide">About Fady Travel</h1>
+    <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto font-medium">
+      Crafting unforgettable journeys with elegance, trust, and personal touch.
+    </p>
+  </section>
+
+  <!-- Our Story -->
+  <section class="py-20 px-6 md:px-20">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Fady Travel was founded with a vision to redefine luxury and meaningful travel.  
+        Each journey we create is curated with precision, combining comfort, adventure, and authentic experiences.  
+        From exotic getaways to tailored cultural immersions, we ensure your trips are more than memories—they are stories you cherish forever.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="bg-[#fefaf5] py-20 px-6 md:px-20">
+    <div class="max-w-6xl mx-auto grid gap-12 md:grid-cols-2">
+      <div class="bg-white p-10 rounded-3xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2">
+        <h3 class="text-3xl font-bold text-orange-600 mb-4">Our Mission</h3>
+        <p class="text-gray-700 leading-relaxed">
+          To craft personalized luxury experiences where every journey feels effortless, exclusive, and unforgettable.
+        </p>
+      </div>
+      <div class="bg-white p-10 rounded-3xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2">
+        <h3 class="text-3xl font-bold text-amber-600 mb-4">Our Vision</h3>
+        <p class="text-gray-700 leading-relaxed">
+          To be the most trusted luxury travel companion, inspiring people to explore the world with sophistication and style.
+        </p>
+      </div>
+    </div>
+  </section>
+<!-- Our Strengths / Highlights Section -->
+<section class="py-20 px-6 md:px-20 bg-[#fefaf5]">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-4xl font-bold text-gray-900 mb-6">Why Choose Fady Travel</h2>
+    <p class="text-gray-600 mb-12 max-w-2xl mx-auto">
+      We combine expertise, luxury, and personalized service to make every journey unforgettable.
+    </p>
+    <div class="grid gap-12 sm:grid-cols-2 md:grid-cols-3">
+      <div class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2">
+        <div class="text-amber-500 text-5xl mb-4">🌍</div>
+        <h4 class="text-xl font-semibold text-gray-800 mb-2">Global Destinations</h4>
+        <p class="text-gray-600 text-sm">
+          Curated trips to over 50 countries with premium experiences.
+        </p>
+      </div>
+      <div class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2">
+        <div class="text-orange-500 text-5xl mb-4">🛡️</div>
+        <h4 class="text-xl font-semibold text-gray-800 mb-2">Trusted & Secure</h4>
+        <p class="text-gray-600 text-sm">
+          We prioritize safety, reliability, and transparency in every journey.
+        </p>
+      </div>
+      <div class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2">
+        <div class="text-yellow-500 text-5xl mb-4">⭐</div>
+        <h4 class="text-xl font-semibold text-gray-800 mb-2">5-Star Experience</h4>
+        <p class="text-gray-600 text-sm">
+          Luxury accommodations, curated itineraries, and personalized service.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Back Button -->
+  <div class="text-center pb-20">
+    <a href="{% url 'web:index' %}" 
+       class="inline-block bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-8 py-3 rounded-full shadow transition">
+      ← Back to Home
+    </a>
+  </div>
+
+</body>
+</html>

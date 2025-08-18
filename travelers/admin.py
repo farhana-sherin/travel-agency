@@ -7,6 +7,7 @@ admin.site.register(DestinationDetail)
 admin.site.register(Booking)
 admin.site.register(Spotlight)
 admin.site.register(TravelersChoice)
+admin.site.register(Review)
 
 
 

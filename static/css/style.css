@@ -79,4 +79,21 @@
   .slide-down.show {
     max-height: 500px; /* large enough to reveal full content */
   }
+  .destination-card {
+  position: relative;
+}
+
+.description {
+  position: absolute;
+  bottom: 60px; /* Adjust based on button */
+  left: 0;
+  right: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  background: white;
+  padding: 0 1rem;
+  z-index: 10;
+}
+
 

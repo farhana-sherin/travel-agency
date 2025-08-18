@@ -22,6 +22,9 @@ urlpatterns = [
     path('travelers-choice/<int:id>/', views.travelers_choice_detail, name='travelers_choice_detail'),
     path('categories/', views.categories_and_destinations, name='categories_and_destinations'),
     path('travelers-choice/add/', views.add_travelers_choice, name='add_travelers_choice'),
+    path("reviews/", views.review_list, name="review_list"),
+    path("reviews/add/", views.add_review, name="add_review"),
+    path("about/", views.about, name="about"),
 
     # Stripe payment routes
    

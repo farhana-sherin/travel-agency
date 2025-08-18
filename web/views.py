@@ -34,12 +34,17 @@ from web.form import *
 
 def index(request):
     destinations = Destination.objects.all()[:3] 
+    reviews= Review.objects.all()
 
     context = {
-        'destinations': destinations
+        'destinations': destinations,
+        'reviews':reviews
     }
 
     return render(request, 'web/index.html', context=context)
+
+def about(request):
+    return render(request, "web/about.html")
 
 
 
@@ -80,20 +85,26 @@ def travelers_choice_detail(request, id):
 
 
 def categories_and_destinations(request):
-    category_choices = [('all', 'All')] + (Destination.CATEGORY_CHOICES)
+    # Prepare categories for template
+    categories = [('all', 'All')] + list(Destination.CATEGORY_CHOICES)
+
+    # Get selected category from GET params
     selected_category = request.GET.get('category', 'all')  
 
+    # Filter destinations
     if selected_category == 'all':
         destinations = Destination.objects.all()
     else:
-        destinations = Destination.objects.filter(category=selected_category)
-        context = {
-            'destinations': destinations,
-            'category_choices': category_choices,
-            'selected_category': selected_category,
-        }
+        destinations = Destination.objects.filter(category__iexact=selected_category)
 
-    return render(request, 'web/categories.html',context=context)
+    context = {
+        'destinations': destinations,
+        'categories': categories,          # template expects 'categories'
+        'selected_category': selected_category,
+    }
+
+    return render(request, 'web/categories.html', context=context)
+
 
 
 
@@ -336,6 +347,38 @@ def booking_detail(request, id):
     }
     
     return render(request, 'web/booking_detail.html', context=context)
+
+
+
+def review_list(request):
+    reviews = Review.objects.all().order_by("-created_at")
+    return render(request, "web/review.html", {"reviews": reviews})
+
+@login_required
+def add_review(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        location = request.POST.get("location")
+        comment = request.POST.get("comment")
+        rating = request.POST.get("rating")
+        user_image = request.FILES.get("user_image")
+
+        Review.objects.create(
+            user=request.user,
+            name=name,
+            location=location,
+            comment=comment,
+            rating=rating,
+            user_image=user_image
+        )
+        return redirect("web:review_list")
+
+    return render(request, "web/add_review.html")
+
+
+
+
+
 
 
 
