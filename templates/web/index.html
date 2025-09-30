@@ -3,96 +3,113 @@
 {% load static %}
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
     <title>Fady Travel</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-
-    
-   
   </head>
 
   <body>
-    <header class="bg-cover bg-no-repeat h-[100vh]" style="background-image: url('static/images/bg-1.png')">
-
-  <div class="w-[95%] mx-auto px-4 sm:px-6 md:px-8 -translate-y-12 flex flex-wrap justify-between items-center">
-
-    
-    <div class="mt-6">
-      <img src="{% static 'images/logo.png' %}" alt="Logo" class="w-[160px] sm:w-[180px]">
+   <header class="bg-cover bg-no-repeat h-[100vh]" style="background-image: url('static/images/bg-1.png')">
+  <div class="w-[95%] mx-auto px-4 sm:px-6 md:px-8 flex justify-between items-center py-4">
+    <!-- Logo -->
+    <div class="-translate-y-10">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" class="w-[140px] sm:w-[160px]">
     </div>
 
-   
-    <nav class="sm:hidden md:block">
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="sm:hidden block text-gray-900 text-2xl focus:outline-none -translate-y-10">
+      ☰
+    </button>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden sm:flex flex-1 justify-center -translate-y-10">
       <ul class="flex gap-6 font-semibold text-base">
         <li><a href="{% url 'web:index' %}" class="hover:text-orange-500">HOME</a></li>
-      <li><a href="{% url 'web:destination_list' %}" class="hover:text-orange-500">DESTINATIONS</a></li>
+        <li><a href="{% url 'web:destination_list' %}" class="hover:text-orange-500">DESTINATIONS</a></li>
         <li><a href="{% url 'web:bookings' %}" class="hover:text-orange-500">BOOKING</a></li>
         <li><a href="{% url 'web:about' %}" class="hover:text-orange-500">ABOUT US</a></li>
       </ul>
     </nav>
 
-    
-    <div class="flex gap-7 mt-4 md:mt-0">
-      <a href="{% url 'web:login' %}" class="font-semibold text-lg sm:text-lg hover:text-orange-500">Sign Up</a>
-      <a href="{% url 'web:logout' %}" class="font-semibold text-lg sm:text-lg hover:text-orange-500">Logout</a>
+    <!-- Auth Links (desktop only) -->
+    <div class="hidden sm:flex gap-6 -translate-y-10">
+      <a href="{% url 'web:login' %}" class="font-semibold text-lg hover:text-orange-500">Sign Up</a>
+      <a href="{% url 'web:logout' %}" class="font-semibold text-lg hover:text-orange-500">Logout</a>
     </div>
   </div>
 
-<div class="w-[90%] mx-auto flex flex-col md:flex-row justify-between items-center py-12 ">
-  <!-- Text Section -->
-  <div class="px-4 sm:px-6 md:px-10  md:w-[50%] sm:w-[55%] ">
-    <!-- Small label -->
-    <p class="text-orange-600 text-sm font-semibold uppercase tracking-widest mb-4">
-      Best Destinations Around the World
-    </p>
+  <!-- Mobile Navigation (toggle menu) -->
+   
+  <div id="mobile-menu" class="sm:hidden hidden w-[200px] px-6 py-4 bg-white shadow-md relative left-[420px] -top-24">
+    <ul class="flex flex-col gap-4 font-semibold text-base text-gray-900 text-center">
+      <li><a href="{% url 'web:index' %}" class="hover:text-orange-500">HOME</a></li>
+      <li><a href="{% url 'web:destination_list' %}" class="hover:text-orange-500">DESTINATIONS</a></li>
+      <li><a href="{% url 'web:bookings' %}" class="hover:text-orange-500">BOOKING</a></li>
+      <li><a href="{% url 'web:about' %}" class="hover:text-orange-500">ABOUT US</a></li>
+      <li><a href="{% url 'web:login' %}" class="hover:text-orange-500">Sign Up</a></li>
+      <li><a href="{% url 'web:logout' %}" class="hover:text-orange-500">Logout</a></li>
+    </ul>
+  </div>
+  
 
-    <!-- Main heading -->
-    <h1 class="font-extrabold text-[34px] sm:text-[48px] md:text-[55px] leading-snug font-serif mb-2 text-gray-900">
-      Discover new places, <span class="text-amber-600">live unforgettable moments</span>.
-    </h1>
+  <!-- Hero Section -->
+  <div class="w-[90%] mx-auto py-12">
+    <!-- Text Section -->
+    <div class="px-4 sm:px-6 md:px-10 md:w-[90%] sm:w-[55%]">
+      <p class="text-orange-600 text-sm font-semibold uppercase tracking-widest mb-4">
+        Best Destinations Around the World
+      </p>
+      <h1 class="font-extrabold text-[34px] sm:text-[48px] md:text-[50px] font-serif mb-2 text-gray-900">
+        Discover new places, <br><span class="text-amber-600">live unforgettable <br>moments</span>.
+      </h1>
+      <p class="text-gray-600 mb-4 text-sm sm:text-base md:text-lg">
+        Travel isn’t just about places, it’s about experiences. We <br>design trips that turn into lasting memories. Wherever <br>you dream to go, we’ll take you there.
+      </p>
+      <a href="#" class="inline-block bg-orange-600 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-700 transition duration-300">
+        Find out more
+      </a>
+    </div>
 
-    <!-- Description -->
-    <p class="text-gray-600 mb-4 text-sm sm:text-base md:text-lg">
-      Travel isn’t just about places, it’s about experiences. We design trips that turn into lasting memories. Wherever you dream to go, we’ll take you there.
-    </p>
-
-    <!-- Button -->
-    <a href="#" class="inline-block bg-orange-600 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-700 transition duration-300">
-      Find out more
-    </a>
+    
   </div>
 </header>
-<section class="py-28 bg-[#f4ebe13f] h-screen">
-   
+
+<script>
+  // Mobile menu toggle
+  document.getElementById("menu-btn").addEventListener("click", function () {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("hidden");
+  });
+</script>
+
+
+<section class="py-28 bg-[#f4ebe13f] min-h-screen">
   <section class="w-[95%] mx-auto">
     <div class="text-center mb-16">
       <h3 class="text-xl font-semibold text-gray-600">Top Selling</h3>
       <h1 class="text-[50px] font-bold uppercase text-[#4b2e1a]">Top Destinations</h1>
     </div>
 
-    <div class="flex justify-center items-start gap-10 flex-wrap">
-  {% for dest in destinations %}
-  
-  <div class="w-[300px] bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
-    <a href="{% url 'web:destination_detail' dest.id %}">
-      <img src="{{ dest.image.url }}" alt="{{ dest.title }}" class="w-full h-[200px] object-cover">
-      <div class="p-4">
-        <div class="flex justify-between items-center mb-2">
-          <h2 class="text-lg font-semibold text-gray-800">{{ dest.title }}</h2>
-          <span class="text-sm text-gray-500">₹{{ dest.price }}</span>
-        </div>
-        <p class="text-sm text-gray-600">{{ dest.duration }} days trip</p>
+    <div class="flex justify-center items-start gap-6 md:gap-10 flex-wrap">
+      {% for dest in destinations %}
+      <div class="w-full sm:w-[300px] bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out mb-6">
+        <a href="{% url 'web:destination_detail' dest.id %}">
+          <img src="{{ dest.image.url }}" alt="{{ dest.title }}" class="w-full h-[200px] object-cover">
+          <div class="p-4">
+            <div class="flex justify-between items-center mb-2">
+              <h2 class="text-lg font-semibold text-gray-800">{{ dest.title }}</h2>
+              <span class="text-sm text-gray-500">₹{{ dest.price }}</span>
+            </div>
+            <p class="text-sm text-gray-600">{{ dest.duration }} days trip</p>
+          </div>
+        </a>
       </div>
-    </a>
-  </div>
-  {% endfor %}
-    
-      
-
+      {% endfor %}
     </div>
   </section>
 </section>
@@ -108,13 +125,10 @@
     </p>
   </div>
 
-  <div class="flex flex-wrap justify-center gap-12 px-6">
-
-    <!-- Card -->
-    <a href="{% url 'web:spotlight_list'%}" 
-       class="group relative w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-      <img src="{% static '/images/spot.jpg' %}" alt="Spotlight" 
-           class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+  <div class="flex flex-wrap justify-center gap-6 md:gap-12 px-6">
+    <!-- Card 1 -->
+    <a href="{% url 'web:spotlight_list'%}" class="group relative w-full sm:w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 mb-6 sm:mb-0">
+      <img src="{% static '/images/spot.jpg' %}" alt="Spotlight" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
       <div class="absolute bottom-0 p-6">
         <h2 class="text-2xl font-bold text-white">Destination Spotlight</h2>
@@ -123,49 +137,39 @@
       </div>
     </a>
 
-    <!-- Card -->
-      <a href="{% url 'web:travelers_choice_list'%}" 
-        class="group relative w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-        <img src="{% static '/images/choice.jpg' %}" alt="Traveler's Choice" 
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-        <div class="absolute bottom-0 p-6">
-          <h2 class="text-2xl font-bold text-white">Traveler's Choice</h2>
-          <p class="text-sm text-gray-200 mt-2">Handpicked by fellow luxury travelers.</p>
-          <span class="inline-block mt-4 px-4 py-1 text-sm border hover:bg-amber-500 text-white rounded-full">Discover</span>
-        </div>
-      </a>
+    
+    <a href="{% url 'web:travelers_choice_list'%}" class="group relative w-full sm:w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 mb-6 sm:mb-0">
+      <img src="{% static '/images/choice.jpg' %}" alt="Traveler's Choice" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+      <div class="absolute bottom-0 p-6">
+        <h2 class="text-2xl font-bold text-white">Traveler's Choice</h2>
+        <p class="text-sm text-gray-200 mt-2">Handpicked by fellow luxury travelers.</p>
+        <span class="inline-block mt-4 px-4 py-1 text-sm border hover:bg-amber-500 text-white rounded-full">Discover</span>
+      </div>
+    </a>
 
-   <!-- Card -->
-<a href="{% url 'web:categories_and_destinations'%}" 
-   class="group relative w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-  <img src="{% static '/images/adventure.jpg' %}" alt="Adventure Packages" 
-       class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-  <div class="absolute bottom-0 p-6">
-    <h2 class="text-2xl font-bold text-white">Explore Packages</h2>
-    <p class="text-sm text-gray-200 mt-2">Thrilling experiences for every explorer.</p>
-    <span class="inline-block mt-4 px-4 py-1 text-sm border hover:bg-amber-500 text-white rounded-full">Book Now</span>
-  </div>
-</a>
+    <!-- Card 3 -->
+    <a href="{% url 'web:categories_and_destinations'%}" class="group relative w-full sm:w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+      <img src="{% static '/images/adventure.jpg' %}" alt="Adventure Packages" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+      <div class="absolute bottom-0 p-6">
+        <h2 class="text-2xl font-bold text-white">Explore Packages</h2>
+        <p class="text-sm text-gray-200 mt-2">Thrilling experiences for every explorer.</p>
+        <span class="inline-block mt-4 px-4 py-1 text-sm border hover:bg-amber-500 text-white rounded-full">Book Now</span>
+      </div>
+    </a>
   </div>
 </section>
 
-
-<section class="py-20 px-6 md:px-16 bg-white">
-  <div class="flex justify-center items-center">
-  <div class="flex justify-between items-center w-[85%]">
-    
-    
-    
-    <div class=" space-y-6">
+<section class="py-20 px-6 md:px-16 bg-white  w-[80%] mx-auto">
+  <div class="flex flex-col md:flex-row justify-center items-center gap-32">
+    <div class="space-y-6 md:w-[50%]">
       <p class="text-gray-500 text-lg font-medium">Easy and Fast</p>
-      <h2 class="text-4xl md:text-5xl font-bold  text-gray-900">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
         Book Your Next Trip <br />In 3 Easy Steps
       </h2>
 
       <div class="space-y-5 mt-8">
-       
         <div class="flex items-start gap-4">
           <span class="w-10 h-10 bg-yellow-400 rounded-md flex items-center justify-center text-white font-bold">1</span>
           <div>
@@ -173,7 +177,7 @@
             <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipiscing elit amet mauris tempus.</p>
           </div>
         </div>
-     
+
         <div class="flex items-start gap-4">
           <span class="w-10 h-10 bg-orange-500 rounded-md flex items-center justify-center text-white font-bold">2</span>
           <div>
@@ -181,7 +185,7 @@
             <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet consectetur adipiscing elit amet mauris tempus.</p>
           </div>
         </div>
-       
+
         <div class="flex items-start gap-4">
           <span class="w-10 h-10 bg-blue-700 rounded-md flex items-center justify-center text-white font-bold">3</span>
           <div>
@@ -192,63 +196,47 @@
       </div>
     </div>
 
-
-    <div class="w-[50%]">
-      <div class="rounded-xl shadow-lg overflow-hidden max-w-xl bg-white">
-        <img src="{% static 'images/people.jpg' %}" alt="" class="w-full h-full object-cover">
-        
-        </div>
+    <div class="w-full md:w-[50%]">
+      <div class="rounded-xl shadow-lg overflow-hidden max-w-full bg-white">
+        <img src="{% static 'images/people.jpg' %}" alt="" class="w-full h-[400px] object-cover ">
       </div>
-
-      
-  </div>
+    </div>
   </div>
 </section>
+
 <section class="w-full py-20 bg-[#f8f9fa]">
-  <div class="text-center">
+  <div class="text-center px-4 sm:px-0">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 uppercase">what our travelers say</h1>
-    <p class="text-lg px-4 md:px-20 text-gray-600 font-medium mt-4" style="font-family: 'Inter', sans-serif;">
+    <p class="text-lg text-gray-600 font-medium mt-4 max-w-2xl mx-auto" style="font-family: 'Inter', sans-serif;">
       These aren’t just reviews — they’re stories of trust and unforgettable memories.
     </p>
   </div>
-<div class="swiper mySwiper mt-16 px-6 w-[80%] mx-auto">
-  <div class="swiper-wrapper">
-    {% for review in reviews %}
-    <!-- Single Slide -->
-    <div class="swiper-slide bg-white border border-gray-200 rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300">
-      <a href="{% url 'web:review_list' %}" 
-         class="block">
-        <div class="flex items-center gap-4 mb-6">
-          
-            <img src="{{ review.user_image.url }}" 
-                 class="w-16 h-16 rounded-full ring-2 ring-blue-200 object-cover" />
-          
-          <div>
-            <h4 class="text-md font-semibold text-gray-800">{{ review.name }}</h4>
-            <span class="text-sm text-gray-500">{{ review.location }}</span>
+
+  <div class="swiper mySwiper mt-16 px-4 sm:px-6 w-full sm:w-[80%] mx-auto">
+    <div class="swiper-wrapper">
+      {% for review in reviews %}
+      <div class="swiper-slide bg-white border border-gray-200 rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 mb-6">
+        <a href="{% url 'web:review_list' %}" class="block">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="{{ review.user_image.url }}" class="w-16 h-16 rounded-full ring-2 ring-blue-200 object-cover" />
+            <div>
+              <h4 class="text-md font-semibold text-gray-800">{{ review.name }}</h4>
+              <span class="text-sm text-gray-500">{{ review.location }}</span>
+            </div>
           </div>
-        </div>
-        <p class=""></p>
-        <p class="text-gray-700 italic leading-relaxed">
-          “{{ review.comment}}”
-        </p>
-        <p class="mt-3 text-sm text-gray-500">Reviewed on {{ review.created_at|date:"F j, Y" }}</p>
-      </a>
+          <p class="text-gray-700 italic leading-relaxed">
+            “{{ review.comment}}”
+          </p>
+          <p class="mt-3 text-sm text-gray-500">Reviewed on {{ review.created_at|date:"F j, Y" }}</p>
+        </a>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
-
 </section>
-
-
-
-
-
 
 <section class="w-[95%] mx-auto py-20 flex justify-center items-center bg-white">
   <div class="w-full max-w-4xl px-6 py-14 rounded-3xl shadow-2xl backdrop-blur-sm bg-white/90 border border-gray-200 text-center">
-
     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-snug mb-6 px-2">
       Stay Updated with Us
     </h2>
@@ -257,25 +245,17 @@
     </p>
 
     <form class="flex flex-col sm:flex-row justify-center items-center gap-4 px-4">
-      <input
-        type="text"
-        placeholder="Enter your mobile number"
-        class="w-full sm:w-[320px] px-5 py-3 rounded-full bg-white shadow-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300 text-gray-800 placeholder-gray-500"
-      />
-      <button
-        type="submit"
-        class="bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-red-400/50 transition-all duration-300 text-lg font-semibold"
-      >
+      <input type="text" placeholder="Enter your mobile number" class="w-full sm:w-[320px] px-5 py-3 rounded-full bg-white shadow-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300 text-gray-800 placeholder-gray-500" />
+      <button type="submit" class="bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-red-400/50 transition-all duration-300 text-lg font-semibold">
         Subscribe
       </button>
     </form>
   </div>
 </section>
+
 <footer class="relative bg-[#1a1a1a] text-gray-100 py-20 overflow-hidden">
-
-
-  <section class="relative w-[85%] mx-auto">
-    <div class="flex flex-col md:flex-row justify-between items-start gap-0">
+  <section class="relative w-[95%] sm:w-[85%] mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-0">
 
       <!-- Logo & Description -->
       <div class="flex flex-col space-y-4 max-w-sm transform transition-transform duration-500 hover:scale-105">
@@ -290,7 +270,7 @@
       </div>
 
       <!-- Explore -->
-      <div class="animate-fade-in delay-400">
+      <div class="animate-fade-in delay-400 mt-6 md:mt-0">
         <h3 class="text-white font-bold text-xl mb-4 mt-3 uppercase tracking-wide">Explore</h3>
         <ul class="space-y-2 text-gray-300 text-lg">
           <li><a href="{% url 'web:index' %}" class="hover:text-orange-400 transition duration-300 relative before:absolute before:left-0 before:-bottom-1 before:h-0.5 before:w-0 before:bg-orange-400 before:transition-all hover:before:w-full">Home</a></li>
@@ -300,7 +280,7 @@
       </div>
 
       <!-- Quick Links -->
-      <div class="animate-fade-in delay-600">
+      <div class="animate-fade-in delay-600 mt-6 md:mt-0">
         <h3 class="text-white font-bold text-xl mb-4 mt-3 uppercase tracking-wide">Quick Links</h3>
         <ul class="space-y-2 text-gray-300 text-lg">
           <li><a href="{% url 'web:bookings' %}" class="hover:text-orange-400 transition duration-300 relative before:absolute before:left-0 before:-bottom-1 before:h-0.5 before:w-0 before:bg-orange-400 before:transition-all hover:before:w-full">Booking</a></li>
@@ -309,8 +289,8 @@
         </ul>
       </div>
 
-    
-      <div class="animate-fade-in delay-800">
+      <!-- Contact -->
+      <div class="animate-fade-in delay-800 mt-6 md:mt-0">
         <h3 class="text-white font-bold text-xl mb-4 mt-3 uppercase tracking-wide">Contact Us</h3>
         <ul class="space-y-2 text-gray-300 text-lg">
           <li>Email: <a href="mailto:hello@fadytravel.com" class="hover:text-orange-400 transition duration-300">hello@fadytravel.com</a></li>
@@ -321,18 +301,13 @@
 
     </div>
 
-    <!-- Footer bottom -->
     <div class="mt-16 border-t border-gray-600/50 pt-6 text-center text-gray-400 text-sm animate-fade-in delay-1000">
       &copy; 2025 Fady Travel. All rights reserved.
     </div>
   </section>
 
   <style>
-    /* Fade in animation */
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn {0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); }}
     .animate-fade-in { animation: fadeIn 1s forwards; }
     .animate-slide-up { animation: fadeIn 1s forwards; }
     .delay-200 { animation-delay: 0.2s; }
@@ -343,29 +318,19 @@
   </style>
 </footer>
 
-
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
   new Swiper(".mySwiper", {
     slidesPerView: 1,
     spaceBetween: 20,
     loop: true,
-    autoplay: {
-      delay: 3500,
-    },
+    autoplay: { delay: 3500 },
     breakpoints: {
+      640: { slidesPerView: 1 },
       768: { slidesPerView: 2 },
       1024: { slidesPerView: 3 }
     }
   });
 </script>
-
-
-
-
 </body>
 </html>

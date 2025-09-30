@@ -286,10 +286,7 @@ def book_destination(request, id):
 
 
 def checkout_success(request):
-    """
-    Stripe sends back ?session_id=xxx
-    We'll verify it and mark the Booking as paid.
-    """
+   
     session_id = request.GET.get("session_id")
     context = {"paid": False}
 
